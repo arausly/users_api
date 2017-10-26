@@ -45,7 +45,7 @@ module.exports = function(server){
         idChecker(req,failure);
         let { _id } = req.params;
         for( let props in req.params){
-        userModel.findOneAndUpdate({_id},{$set:{props}},{returnNewDocument:true})
+        userModel.findOneAndUpdate({_id},{$set:{props:req.params[props]}},{returnNewDocument:true})
             .then(user => (!user) ? Promise.reject() : success(res,next,user))
             .catch(err => failure(res,next,err,404));
         }

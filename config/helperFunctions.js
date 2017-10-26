@@ -15,7 +15,7 @@ module.exports.failure =(res,next,data,http_code)=>{
 }
 
 module.exports.idChecker = (req,failure)=>{
-  req.assert('_id','id must be provided and must be numeric').notEmpty()
+  req.assert('_id','id must be provided and must be numeric').notEmpty();
   let errors =  req.validationErrors();
   if(errors) return failure(res,next,errors[0],400);
 }
